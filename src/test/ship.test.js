@@ -14,3 +14,13 @@ test('Creates a ship object with length, timesHit, isSunk() and hit()', () => {
 test('When ship is hit, return the times it was hit', () => {
   expect(Ship(3).hit()).toBe(1);
 });
+
+test('Returns false if the ship is not sunk', () => {
+  expect(Ship(1).isSunk()).toBe(false);
+});
+
+test('Returns true if the ship is sunk', () => {
+  const ship = Ship(1);
+  ship.hit();
+  expect(ship.isSunk()).toBe(true);
+});
