@@ -1,7 +1,7 @@
 const Ship = (length) => {
   let timesHit = 0;
 
-  let isSunk = () => {};
+  const isSunk = () => timesHit >= length;
 
   const hit = () => {
     timesHit += 1;
