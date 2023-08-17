@@ -1,3 +1,4 @@
 test('When hit, returns ship remaining health', () => {
-  expect(1).toBe(1);
+  const ship = Ship();
+  expect(ship.hit()).toBe(2);
 });
