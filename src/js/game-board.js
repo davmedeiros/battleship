@@ -39,7 +39,18 @@ const GameBoard = () => {
     return target;
   };
 
-  const hasAllSunk = () => {};
+  const hasAllSunk = () => {
+    let result = true;
+
+    const flatBoard = board.flat(1);
+    flatBoard.forEach((item) => {
+      if (typeof item === 'object') {
+        result = false;
+      }
+    });
+
+    return result;
+  };
 
   return { placeShip, receiveAttack, hasAllSunk };
 };
