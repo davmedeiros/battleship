@@ -35,6 +35,7 @@ const GameBoard = () => {
       target.hit();
     }
 
+    board[coordinatesY][coordinatesX] = 'shot';
     return target;
   };
 
