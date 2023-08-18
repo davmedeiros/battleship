@@ -14,5 +14,7 @@ test("Creates a player with a name and if it's AI or not", () => {
 test('Attack returns something if it was successful', () => {
   const player = Player('John Doe');
   const enemy = Player('Amy Row');
-  expect(player.attack(3, 1, enemy.getBoard())).not.toBeUndefined();
+  const enemyBoard = enemy.getBoard();
+  enemyBoard.placeShip(3, 4, 5);
+  expect(player.attack(4, 6, enemyBoard)).not.toBeUndefined();
 });

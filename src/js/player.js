@@ -3,7 +3,8 @@ import GameBoard from './game-board';
 const Player = (name, isAI = false) => {
   const board = GameBoard();
 
-  const attack = (coordinatesY, coordinatesX, enemyBoard) => {};
+  const attack = (coordinatesY, coordinatesX, enemyBoard) =>
+    enemyBoard.receiveAttack(coordinatesY, coordinatesX);
 
   const getBoard = () => board;
 
