@@ -1,4 +1,5 @@
 import GameBoard from '../js/game-board';
+import Ship from '../js/ship';
 
 test('GameBoard object is created with attributes and methods', () => {
   const expected = {
@@ -7,5 +8,12 @@ test('GameBoard object is created with attributes and methods', () => {
     hasAllSunk: expect.any(Function),
   };
   const actual = GameBoard();
+  expect(actual).toEqual(expected);
+});
+
+test("Returns a ship if it's able to place it", () => {
+  const gameBoard = GameBoard();
+  const expected = Ship(3);
+  const actual = gameBoard.placeShip(3, 3, 2);
   expect(actual).toEqual(expected);
 });
