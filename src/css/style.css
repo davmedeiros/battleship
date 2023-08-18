@@ -19,7 +19,7 @@
   --color-gamma: #ffffff;
   --color-psi: #6bf178;
   --color-omega: #35a7ff;
-  --shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow: 0 8px 8px rgba(0, 0, 0, 0.4);
 }
 
 body {
@@ -39,7 +39,7 @@ header {
 main {
   background-color: var(--color-omega);
   display: grid;
-  grid-template: 80px 1fr / 225px 1fr 225px;
+  grid-template: 100px 1fr / 250px 1fr 250px;
   justify-content: center;
   gap: 32px;
 }
@@ -49,6 +49,12 @@ h1 {
   font-size: 8rem;
   margin: 0;
   text-shadow: var(--shadow);
+  box-shadow: var(--shadow);
+  background: linear-gradient(90deg, var(--color-omega), var(--color-psi));
+  border-radius: 12px;
+  margin-top: 20px;
+  z-index: 3;
+  padding: 0 10px;
 }
 
 #screen {
