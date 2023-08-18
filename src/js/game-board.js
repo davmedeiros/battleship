@@ -41,8 +41,8 @@ const GameBoard = () => {
 
   const hasAllSunk = () => {
     let result = true;
-
     const flatBoard = board.flat(1);
+
     flatBoard.forEach((item) => {
       if (typeof item === 'object') {
         result = false;
