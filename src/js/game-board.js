@@ -31,12 +31,6 @@ const GameBoard = () => {
   const receiveAttack = (coordinatesY, coordinatesX) => {
     const target = board[coordinatesY][coordinatesX];
 
-    // This way of marking shots is problematic
-    // essentially items get removed on hit from the board
-    // this also makes it so 'shot' is always returned
-    // making the return essentially useless.
-    //
-    // TODO: Find a better way to handle this.
     if (target && target !== 'shot') {
       target.hit();
     }

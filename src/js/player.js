@@ -8,7 +8,7 @@ const Player = (name, isAI = false) => {
     let coordinatesY;
     let coordinatesX;
 
-    while (!result) {
+    while (!result || result === 'shot') {
       coordinatesY = Math.floor(Math.random() * 10);
       coordinatesX = Math.floor(Math.random() * 10);
       result = enemyBoard.receiveAttack(coordinatesY, coordinatesX);
