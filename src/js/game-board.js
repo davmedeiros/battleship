@@ -3,14 +3,18 @@ import Ship from './ship';
 const GameBoard = () => {
   const board = [...Array(10)].map(() => [...Array(10)]);
 
-  const placeShip = (shipLength, coordinatesY, coordinatesX) => {
+  const placeShip = (shipLength, coordinatesY, coordinatesX, isVertical) => {
     let result;
 
     if (!board[coordinatesY][coordinatesX]) {
       const ship = Ship(shipLength);
 
       for (let i = 0; i < ship.length; i += 1) {
-        board[coordinatesY][coordinatesX + i] = ship;
+        if (isVertical) {
+          board[coordinatesY + i][coordinatesX] = ship;
+        } else {
+          board[coordinatesY][coordinatesX + i] = ship;
+        }
       }
 
       result = board[coordinatesY][coordinatesX];
