@@ -6,5 +6,5 @@ test('GameBoard object is created with attributes and methods', () => {
     hasAllSunk: false,
   };
   const actual = GameBoard();
-  expect(gameBoard).toEqual(actual);
+  expect(expected).toEqual(actual);
 });
