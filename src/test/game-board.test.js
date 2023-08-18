@@ -56,6 +56,6 @@ test('Attacks on the same spot are ignored', () => {
   const gameBoard = GameBoard();
   const ship = gameBoard.placeShip(3, 5, 3, true);
   gameBoard.receiveAttack(5, 3);
-  const attack2 = gameBoard.receiveAttack(5, 3);
+  gameBoard.receiveAttack(5, 3);
   expect(ship.hit()).toBe(2);
 });
