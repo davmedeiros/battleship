@@ -28,7 +28,18 @@ const GameBoard = () => {
     return result;
   };
 
-  const receiveAttack = () => {};
+  const receiveAttack = (coordinatesY, coordinatesX) => {
+    let result;
+
+    if (
+      board[coordinatesY][coordinatesX] &&
+      board[coordinatesY][coordinatesX] !== 'shot'
+    ) {
+      result = board[coordinatesY][coordinatesX];
+    }
+
+    return result;
+  };
   const hasAllSunk = () => {};
 
   return { placeShip, receiveAttack, hasAllSunk };
