@@ -37,7 +37,7 @@ test('Ships get placed in a given orientation', () => {
   expect(place2).toBeUndefined();
 });
 
-test('Receives a successful attack', () => {
+test('Receives a successful attack on different segments', () => {
   const gameBoard = GameBoard();
   const ship = gameBoard.placeShip(2, 3, 2);
   gameBoard.receiveAttack(3, 3);
