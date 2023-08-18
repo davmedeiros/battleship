@@ -1,15 +1,18 @@
 import Ship from './ship';
 
 const GameBoard = () => {
-  const board = [...Array(10)].map(() => [...Array(10)]);
+  const board = [...Array(10)].map(() => [...Array(10).fill(0)]);
 
   const placeShip = (shipLength, coordinatesY, coordinatesX) => {
-    if (!board[coordinatesY][coordinatesY]) {
+    let result;
+
+    if (board[coordinatesY][coordinatesX] === 0) {
       const ship = Ship(shipLength);
       board[coordinatesY][coordinatesX] = ship;
-      // console.table(board[coordinatesY][coordinatesX]);
+      result = board[coordinatesY][coordinatesX];
     }
-    return board[coordinatesY][coordinatesX];
+
+    return result;
   };
 
   const receiveAttack = () => {};
