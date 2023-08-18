@@ -18,3 +18,11 @@ test('Attack returns something if it was successful', () => {
   enemyBoard.placeShip(3, 4, 5);
   expect(player.attack(4, 6, enemyBoard)).not.toBeUndefined();
 });
+
+test('Attack returns undefined it hits nothing', () => {
+  const player = Player('John Doe');
+  const enemy = Player('Amy Row');
+  const enemyBoard = enemy.getBoard();
+  enemyBoard.placeShip(3, 4, 5);
+  expect(player.attack(7, 8, enemyBoard)).toBeUndefined();
+});
