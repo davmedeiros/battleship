@@ -8,7 +8,7 @@ const Ship = (length) => {
     return timesHit;
   };
 
-  return { length, timesHit, isSunk, hit };
+  return { length, isSunk, hit };
 };
 
 export default Ship;

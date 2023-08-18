@@ -3,7 +3,6 @@ import Ship from '../js/ship';
 test('Creates a ship object with length, timesHit, isSunk() and hit()', () => {
   const expected = {
     length: 3,
-    timesHit: 0,
     isSunk: expect.any(Function),
     hit: expect.any(Function),
   };
@@ -12,7 +11,9 @@ test('Creates a ship object with length, timesHit, isSunk() and hit()', () => {
 });
 
 test('When ship is hit, return the times it was hit', () => {
-  expect(Ship(3).hit()).toBe(1);
+  const ship = Ship(3);
+  ship.hit();
+  expect(ship.hit()).toBe(2);
 });
 
 test('Returns false if the ship is not sunk', () => {

@@ -35,7 +35,9 @@ const GameBoard = () => {
       board[coordinatesY][coordinatesX] &&
       board[coordinatesY][coordinatesX] !== 'shot'
     ) {
-      result = board[coordinatesY][coordinatesX];
+      const ship = board[coordinatesY][coordinatesX];
+      ship.hit();
+      result = ship;
     }
 
     return result;
