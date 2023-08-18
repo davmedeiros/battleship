@@ -8,7 +8,11 @@ const GameBoard = () => {
 
     if (board[coordinatesY][coordinatesX] === 0) {
       const ship = Ship(shipLength);
-      board[coordinatesY][coordinatesX] = ship;
+
+      for (let i = 0; i < ship.length; i += 1) {
+        board[coordinatesY][coordinatesX + i] = ship;
+      }
+
       result = board[coordinatesY][coordinatesX];
     }
 
