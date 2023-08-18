@@ -59,3 +59,10 @@ test('Attacks on the same spot are ignored', () => {
   gameBoard.receiveAttack(5, 3);
   expect(ship.hit()).toBe(2);
 });
+
+test('Return true if all have sunk', () => {
+  const gameBoard = GameBoard();
+  gameBoard.placeShip(1, 5, 2);
+  gameBoard.receiveAttack(5, 2);
+  expect(gameBoard.hasAllSunk()).toBe(true);
+});
