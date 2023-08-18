@@ -20,3 +20,26 @@
   --color-psi: #6bf178;
   --color-omega: #35a7ff;
 }
+
+body {
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: 150px 1fr;
+}
+
+header {
+  background-color: var(--color-beta);
+  display: grid;
+  justify-content: center;
+  align-items: stretch;
+}
+
+main {
+  background-color: var(--color-omega);
+}
+
+h1 {
+  color: var(--color-alpha);
+  font-size: 8rem;
+  margin: 0;
+}
