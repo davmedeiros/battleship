@@ -1,9 +1,13 @@
 import GameBoard from './game-board';
 
 const Player = (name, isAI = false) => {
-  const attack = (coordinatesY, coordinatesX) => {};
+  const board = GameBoard();
 
-  return { name, isAI, attack };
+  const attack = (coordinatesY, coordinatesX, enemyBoard) => {};
+
+  const getBoard = () => board;
+
+  return { name, isAI, attack, getBoard };
 };
 
 export default Player;
