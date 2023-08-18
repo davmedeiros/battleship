@@ -38,8 +38,9 @@ test('Ships get placed in a given orientation', () => {
   expect(place2).toBeUndefined();
 });
 
-test('Receives successful attack', () => {
+test('Receives a successful attack', () => {
   const gameBoard = GameBoard();
-  const actual = gameBoard.receiveAttack();
+  gameBoard.placeShip(2, 3, 2);
+  const actual = gameBoard.receiveAttack(3, 3);
   expect(actual).not.toBeUndefined();
 });
