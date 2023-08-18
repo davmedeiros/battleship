@@ -37,6 +37,7 @@ const GameBoard = () => {
 
     return target;
   };
+
   const hasAllSunk = () => {};
 
   return { placeShip, receiveAttack, hasAllSunk };
