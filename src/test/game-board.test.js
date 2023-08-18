@@ -43,3 +43,10 @@ test('Receives a successful attack', () => {
   gameBoard.receiveAttack(3, 3);
   expect(ship.hit()).toBe(2);
 });
+
+test('Receives a unsuccessful attack', () => {
+  const gameBoard = GameBoard();
+  const ship = gameBoard.placeShip(2, 3, 2);
+  gameBoard.receiveAttack(4, 3);
+  expect(ship.hit()).toBe(1);
+});
