@@ -3,16 +3,30 @@ import GameBoard from './game-board';
 const Player = (name, isAI = false) => {
   const board = GameBoard();
 
-  const attack = (enemyBoard, coordinatesY, coordinatesX) => {
-    let targetY = coordinatesY;
-    let targetX = coordinatesX;
+  const aiAttack = (enemyBoard) => {
+    let result;
+    let coordinatesY;
+    let coordinatesX;
 
-    if (isAI) {
-      targetY = Math.floor(Math.random() * 10);
-      targetX = Math.floor(Math.random() * 10);
+    while (!result) {
+      coordinatesY = Math.floor(Math.random() * 10);
+      coordinatesX = Math.floor(Math.random() * 10);
+      result = enemyBoard.receiveAttack(coordinatesY, coordinatesX);
     }
 
-    return enemyBoard.receiveAttack(targetY, targetX);
+    return result;
+  };
+
+  const attack = (enemyBoard, coordinatesY, coordinatesX) => {
+    let result;
+
+    if (isAI) {
+      result = aiAttack(enemyBoard);
+    } else {
+      result = enemyBoard.receiveAttack(coordinatesY, coordinatesX);
+    }
+
+    return result;
   };
 
   const getBoard = () => board;

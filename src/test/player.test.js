@@ -32,5 +32,5 @@ test('AI player attacks successfully', () => {
   const enemy = Player('Amy Row');
   const enemyBoard = enemy.getBoard();
   enemyBoard.placeShip(3, 4, 5);
-  expect(robot.attack(enemyBoard)).toBeUndefined();
+  expect(robot.attack(enemyBoard)).not.toBeUndefined();
 });
