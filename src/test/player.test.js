@@ -9,3 +9,8 @@ test("Creates a player with a name and if it's AI or not", () => {
   const player = Player('John Doe');
   expect(player).toEqual(expected);
 });
+
+test('Attack returns something if it was successful', () => {
+  const player = Player('John Doe');
+  expect(player.attack()).not.toBeUndefined();
+});
