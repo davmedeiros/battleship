@@ -1,5 +1,4 @@
 import GameBoard from '../js/game-board';
-import Ship from '../js/ship';
 
 test('GameBoard object is created with attributes and methods', () => {
   const expected = {
