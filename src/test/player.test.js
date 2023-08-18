@@ -34,3 +34,10 @@ test('AI player attacks successfully', () => {
   enemyBoard.placeShip(3, 4, 5);
   expect(robot.attack(enemyBoard)).not.toBeUndefined();
 });
+
+test("AI doesn't get stuck if there are no spots to attack", () => {
+  const robot = Player('Mr. ROBOT', true);
+  const enemy = Player('Amy Row');
+  const enemyBoard = enemy.getBoard();
+  expect(robot.attack(enemyBoard)).toBeUndefined();
+});
