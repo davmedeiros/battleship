@@ -36,7 +36,7 @@ header {
 main {
   background-color: var(--color-omega);
   display: grid;
-  grid-template: 80px 1fr / 150px 1fr 150px;
+  grid-template: 80px 1fr / 225px 1fr 225px;
   justify-content: center;
   gap: 32px;
 }
@@ -68,9 +68,9 @@ h1 {
   display: grid;
   gap: 32px;
   grid-template: 1fr / repeat(2, 1fr);
-  padding-bottom: 32px;
 }
 
 .board {
   background-color: white;
+  aspect-ratio: 1 / 1;
 }
