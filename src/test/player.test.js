@@ -16,7 +16,7 @@ test('Attack returns something if it was successful', () => {
   const enemy = Player('Amy Row');
   const enemyBoard = enemy.getBoard();
   enemyBoard.placeShip(3, 4, 5);
-  expect(player.attack(4, 6, enemyBoard)).not.toBeUndefined();
+  expect(player.attack(enemyBoard, 4, 6)).not.toBeUndefined();
 });
 
 test('Attack returns undefined it hits nothing', () => {
@@ -24,5 +24,13 @@ test('Attack returns undefined it hits nothing', () => {
   const enemy = Player('Amy Row');
   const enemyBoard = enemy.getBoard();
   enemyBoard.placeShip(3, 4, 5);
-  expect(player.attack(7, 8, enemyBoard)).toBeUndefined();
+  expect(player.attack(enemyBoard, 7, 8)).toBeUndefined();
+});
+
+test('AI player attacks successfully', () => {
+  const robot = Player('Mr. ROBOT', true);
+  const enemy = Player('Amy Row');
+  const enemyBoard = enemy.getBoard();
+  enemyBoard.placeShip(3, 4, 5);
+  expect(robot.attack(enemyBoard)).toBeUndefined();
 });
