@@ -66,3 +66,11 @@ test('Return true if all have sunk', () => {
   gameBoard.receiveAttack(5, 2);
   expect(gameBoard.hasAllSunk()).toBe(true);
 });
+
+test('Return false there are still ships on the board', () => {
+  const gameBoard = GameBoard();
+  gameBoard.placeShip(1, 5, 2);
+  gameBoard.placeShip(1, 7, 3);
+  gameBoard.receiveAttack(5, 2);
+  expect(gameBoard.hasAllSunk()).toBe(false);
+});
