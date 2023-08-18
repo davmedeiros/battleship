@@ -38,6 +38,7 @@ main {
   display: grid;
   grid-template: 80px 1fr / 150px 1fr 150px;
   justify-content: center;
+  gap: 32px;
 }
 
 h1 {
@@ -59,4 +60,17 @@ h1 {
 #screen p {
   margin: 0;
   color: var(--color-psi);
+}
+
+#play-area {
+  grid-row: 2 / -1;
+  grid-column: 2 / 3;
+  display: grid;
+  gap: 32px;
+  grid-template: 1fr / repeat(2, 1fr);
+  padding-bottom: 32px;
+}
+
+.board {
+  background-color: white;
 }
