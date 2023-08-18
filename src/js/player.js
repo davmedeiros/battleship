@@ -1,5 +1,8 @@
+import GameBoard from './game-board';
+
 const Player = (name, isAI = false) => {
-  const attack = () => {};
+  const attack = (coordinatesY, coordinatesX) => {};
+
   return { name, isAI, attack };
 };
 
