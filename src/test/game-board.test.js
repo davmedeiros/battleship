@@ -23,3 +23,10 @@ test("Returns undefined if the ship can't be placed", () => {
   const place2 = gameBoard.placeShip(3, 3, 2);
   expect(place2).toBeUndefined();
 });
+
+test('Ships occupy their full length', () => {
+  const gameBoard = GameBoard();
+  gameBoard.placeShip(3, 3, 2);
+  const place2 = gameBoard.placeShip(2, 3, 4);
+  expect(place2).toBeUndefined();
+});
