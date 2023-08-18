@@ -37,6 +37,12 @@ test('Ships get placed in a given orientation', () => {
   expect(place2).toBeUndefined();
 });
 
+test("Ship can't be placed out of bounds", () => {
+  const gameBoard = GameBoard();
+  const ship = gameBoard.placeShip(2, 9, 0, true);
+  expect(ship).toBeUndefined();
+});
+
 test('Receives a successful attack on different segments', () => {
   const gameBoard = GameBoard();
   const ship = gameBoard.placeShip(2, 3, 2);
