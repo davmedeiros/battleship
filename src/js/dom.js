@@ -19,7 +19,7 @@ const mockPlays = () => {
 
 mockPlays();
 
-const createBoards = () => {
+const renderBoards = () => {
   const playerBoard = game.player.getGameBoard().getBoard();
   const enemyBoard = game.enemy.getGameBoard().getBoard();
   const boards = [playerBoard, enemyBoard];
@@ -30,7 +30,15 @@ const createBoards = () => {
       rows.forEach((spot) => {
         const spotView = document.createElement('div');
         spotView.classList.add('spot');
-        spotView.textContent = spot;
+
+        if (spot === 'shot') {
+          spotView.classList.add('shot');
+        } else if (spot) {
+          spotView.classList.add('ship');
+        } else {
+          spotView.classList.add('free');
+        }
+
         boardView.appendChild(spotView);
       });
     });
@@ -38,4 +46,4 @@ const createBoards = () => {
   });
 };
 
-export default createBoards;
+export default renderBoards;

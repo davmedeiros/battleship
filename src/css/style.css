@@ -98,4 +98,13 @@ h1 {
   background-color: var(--color-gamma);
   display: grid;
   place-items: center;
+  overflow: hidden;
+}
+
+.shot {
+  background-color: var(--color-beta);
+}
+
+.ship {
+  background-color: var(--color-alpha);
 }
