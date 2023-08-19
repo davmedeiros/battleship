@@ -5,6 +5,7 @@ test('Creates a ship object with length, timesHit, isSunk() and hit()', () => {
     length: 3,
     isSunk: expect.any(Function),
     hit: expect.any(Function),
+    name: 'Cruiser',
   };
   const actual = Ship(3);
   expect(actual).toEqual(expected);
