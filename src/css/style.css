@@ -82,7 +82,7 @@ h1 {
 }
 
 #player {
-  cursor: not-allowed;
+  pointer-events: none;
 }
 
 #enemy {

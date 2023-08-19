@@ -20,6 +20,12 @@ const mockPlays = () => {
 mockPlays();
 //-----------------------------------------------
 
+const clearContainer = (container) => {
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
+};
+
 const renderBoards = () => {
   const playerBoard = game.player.getGameBoard().getBoard();
   const enemyBoard = game.enemy.getGameBoard().getBoard();
@@ -27,6 +33,7 @@ const renderBoards = () => {
   let index = 0;
 
   boardViews.forEach((boardView) => {
+    clearContainer(boardView);
     boards[index].forEach((rows, coordinatesY) => {
       rows.forEach((spot, coordinatesX) => {
         const spotView = document.createElement('div');
@@ -43,6 +50,15 @@ const renderBoards = () => {
         spotView.textContent = `${coordinatesY}/${coordinatesX}`;
         spotView.dataset.coordinatesY = coordinatesY;
         spotView.dataset.coordinatesX = coordinatesX;
+
+        spotView.addEventListener('click', () => {
+          game.player.attack(
+            game.enemy.getGameBoard(),
+            coordinatesY,
+            coordinatesX
+          );
+          renderBoards();
+        });
 
         boardView.appendChild(spotView);
       });
