@@ -3,8 +3,8 @@ import Game from './game';
 const game = Game('Admiral');
 const boardViews = document.querySelectorAll('.board');
 const message = document.querySelector('#message');
-const playerShipsToPlace = [2, 2, 3, 3];
-const enemyShipsToPlace = [2, 2, 3, 3];
+const playerShipsToPlace = [2, 3, 3, 4, 5];
+const enemyShipsToPlace = [2, 3, 3, 4, 5];
 
 // MOCK: Make some mock plays for testing purposes
 // const mockPlays = () => {
@@ -35,11 +35,10 @@ const endGame = () => {
   });
 };
 
-const placeShip = (placer, length, coordinatesY, coordinatesX, isVertical) => {
+const placeShip = (placer, length, coordinatesY, coordinatesX, isVertical) =>
   placer
     .getGameBoard()
     .placeShip(length, coordinatesY, coordinatesX, isVertical);
-};
 
 const attack = (attacker, target, coordinatesY, coordinatesX) => {
   let hasWon = false;
@@ -126,13 +125,24 @@ const renderBoards = () => {
                 if (enemyShipsToPlace.length <= 0) {
                   attack(game.enemy, game.player);
                 } else {
-                  placeShip(
-                    game.enemy,
-                    enemyShipsToPlace.pop(),
-                    Math.floor(Math.random() * 10),
-                    Math.floor(Math.random() * 10),
-                    Math.floor(Math.random() * 2) === 0
-                  );
+                  let result;
+                  do {
+                    console.log('trying to place');
+                    const popped = enemyShipsToPlace.pop();
+                    result = placeShip(
+                      game.enemy,
+                      popped,
+                      Math.floor(Math.random() * 10),
+                      Math.floor(Math.random() * 10),
+                      Math.floor(Math.random() * 2) === 0
+                    );
+
+                    if (!result) {
+                      enemyShipsToPlace.push(popped);
+                    } else {
+                      message.textContent = `${popped}`;
+                    }
+                  } while (!result);
                 }
                 renderBoards();
                 boardView.classList.toggle('locked');
