@@ -86,21 +86,33 @@ const renderBoards = () => {
         spotView.dataset.coordinatesX = coordinatesX;
 
         spotView.addEventListener('click', () => {
-          const hasWon = attack(
-            game.player,
-            game.enemy,
-            coordinatesY,
-            coordinatesX
-          );
+          message.textContent = `${game.player.name} is aiming...`;
+          boardView.classList.toggle('locked');
 
-          renderBoards();
+          let hasWon = false;
 
-          if (!hasWon) {
-            setTimeout(() => {
-              attack(game.enemy, game.player);
-              renderBoards();
-            }, 3000);
-          }
+          setTimeout(() => {
+            hasWon = attack(
+              game.player,
+              game.enemy,
+              coordinatesY,
+              coordinatesX
+            );
+            renderBoards();
+          }, 3000);
+
+          setTimeout(() => {
+            if (!hasWon) {
+              message.textContent = `${game.enemy.name} is aiming...`;
+
+              setTimeout(() => {
+                attack(game.enemy, game.player);
+                renderBoards();
+              }, 3000);
+            }
+
+            boardView.classList.toggle('locked');
+          }, 5000);
         });
 
         boardView.appendChild(spotView);
