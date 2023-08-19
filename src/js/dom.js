@@ -14,6 +14,7 @@ const createBoards = () => {
       rows.forEach((spot) => {
         const spotView = document.createElement('div');
         spotView.classList.add('spot');
+        spotView.textContent = 'X';
         boardView.appendChild(spotView);
       });
     });

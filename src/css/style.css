@@ -91,8 +91,11 @@ h1 {
   gap: 5px;
   background-color: var(--color-omega);
   overflow: hidden;
+  cursor: crosshair;
 }
 
 .spot {
   background-color: var(--color-gamma);
+  display: grid;
+  place-items: center;
 }
