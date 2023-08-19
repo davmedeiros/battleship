@@ -135,7 +135,8 @@ button {
 }
 
 button:hover,
-button.enabled {
+button.enabled,
+.free:hover {
   background-color: var(--color-psi);
 }
 
