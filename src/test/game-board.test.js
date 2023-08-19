@@ -5,6 +5,7 @@ test('GameBoard object is created with attributes and methods', () => {
     placeShip: expect.any(Function),
     receiveAttack: expect.any(Function),
     hasAllSunk: expect.any(Function),
+    getBoard: expect.any(Function),
   };
   const actual = GameBoard();
   expect(actual).toEqual(expected);

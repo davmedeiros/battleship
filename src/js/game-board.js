@@ -59,7 +59,9 @@ const GameBoard = () => {
     return result;
   };
 
-  return { placeShip, receiveAttack, hasAllSunk };
+  const getBoard = () => board;
+
+  return { placeShip, receiveAttack, hasAllSunk, getBoard };
 };
 
 export default GameBoard;
