@@ -2,8 +2,8 @@ import Game from '../js/game';
 
 test('Creates a game', () => {
   const expected = {
-    player: expect.any(Function),
-    enemy: expect.any(Function),
+    player: expect.any(Object),
+    enemy: expect.any(Object),
     play: expect.any(Function),
   };
   const game = Game('John Doe');
