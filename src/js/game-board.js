@@ -11,15 +11,17 @@ const GameBoard = () => {
   ) => {
     let result;
 
-    if (!board[coordinatesY][coordinatesX]) {
-      const ship = Ship(shipLength);
+    if (
+      coordinatesX >= 0 &&
+      coordinatesY >= 0 &&
+      coordinatesX <= 9 &&
+      coordinatesY <= 9 &&
+      ((!isVertical && coordinatesX + (shipLength - 1) <= 9) ||
+        (isVertical && coordinatesY + (shipLength - 1) <= 9))
+    ) {
+      if (!board[coordinatesY][coordinatesX]) {
+        const ship = Ship(shipLength);
 
-      if (
-        coordinatesX + shipLength <= 9 &&
-        coordinatesX >= 0 &&
-        coordinatesY + shipLength <= 9 &&
-        coordinatesY >= 0
-      ) {
         for (let i = 0; i < ship.length; i += 1) {
           if (isVertical) {
             board[coordinatesY + i][coordinatesX] = ship;

@@ -44,6 +44,18 @@ test("Ship can't be placed out of bounds", () => {
   expect(ship).toBeUndefined();
 });
 
+test("Ship can't be placed with it's initial point out of bounds", () => {
+  const gameBoard = GameBoard();
+  const ship = gameBoard.placeShip(2, 10, 0);
+  expect(ship).toBeUndefined();
+});
+
+test('Ship can be placed at the edge of bounds', () => {
+  const gameBoard = GameBoard();
+  const ship = gameBoard.placeShip(3, 7, 3, true);
+  expect(ship).not.toBeUndefined();
+});
+
 test('Receives a successful attack on different segments', () => {
   const gameBoard = GameBoard();
   const ship = gameBoard.placeShip(2, 3, 2);
