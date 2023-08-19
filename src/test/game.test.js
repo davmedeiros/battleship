@@ -9,3 +9,8 @@ test('Creates a game', () => {
   const game = Game('John Doe');
   expect(game).toEqual(expected);
 });
+
+test('Returns something when it plays successfully', () => {
+  const game = Game('John Doe');
+  expect(game.play()).not.toBeUndefined();
+});
