@@ -144,6 +144,11 @@ const renderBoards = () => {
                           toggleVertical.classList.add('hidden');
                           playerBoardView.classList.toggle('locked');
                           enemyBoardView.classList.toggle('locked');
+                          setTimeout(() => {
+                            message.textContent =
+                              'End of placement phase: Awaiting orders to fire...';
+                            renderBoards();
+                          }, 1000);
                         }
                       }
                     } while (!result);
