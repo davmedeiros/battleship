@@ -108,10 +108,9 @@ const renderBoards = () => {
               setTimeout(() => {
                 attack(game.enemy, game.player);
                 renderBoards();
+                boardView.classList.toggle('locked');
               }, 3000);
             }
-
-            boardView.classList.toggle('locked');
           }, 5000);
         });
 
