@@ -38,7 +38,11 @@ const attack = (coordinatesY, coordinatesX) => {
 
   if (result) {
     if (result.isSunk()) {
-      message.textContent = 'You sunk a ship!';
+      if (game.enemy.getGameBoard().hasAllSunk()) {
+        message.textContent = 'Congratulations. You sunk all ships!';
+      } else {
+        message.textContent = 'You sunk a ship!';
+      }
     } else {
       message.textContent = 'The shot hit a ship!';
     }

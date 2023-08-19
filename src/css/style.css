@@ -110,6 +110,7 @@ h1 {
 
 .shot {
   background-color: var(--color-beta);
+  pointer-events: none;
 }
 
 .ship {
