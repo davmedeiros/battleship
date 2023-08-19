@@ -82,11 +82,11 @@ h1 {
 }
 
 #player {
-  cursor: crosshair;
+  cursor: not-allowed;
 }
 
 #enemy {
-  cursor: not-allowed;
+  cursor: crosshair;
 }
 
 .board {
