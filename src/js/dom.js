@@ -127,7 +127,6 @@ const renderBoards = () => {
                 } else {
                   let result;
                   do {
-                    console.log('trying to place');
                     const popped = enemyShipsToPlace.pop();
                     result = placeShip(
                       game.enemy,
