@@ -97,6 +97,7 @@ const renderBoards = () => {
           boardView.classList.toggle('locked');
 
           let hasWon = false;
+          let playerHasPlaced = true;
 
           setTimeout(() => {
             if (playerShipsToPlace.length <= 0) {
@@ -107,45 +108,57 @@ const renderBoards = () => {
                 coordinatesX
               );
             } else {
-              placeShip(
+              const popped = playerShipsToPlace.pop();
+              const result = placeShip(
                 game.player,
-                playerShipsToPlace.pop(),
+                popped,
                 coordinatesY,
                 coordinatesX
               );
+
+              if (result) {
+                message.textContent = `${game.player.name} placed a ${result.name}`;
+              } else {
+                playerShipsToPlace.push(popped);
+                playerHasPlaced = false;
+                message.textContent = `${game.player.name} ship was sent out of bounds. Try again.`;
+                boardView.classList.toggle('locked');
+              }
             }
             renderBoards();
           }, 3000);
 
           setTimeout(() => {
-            if (!hasWon) {
-              message.textContent = `${game.enemy.name} is aiming...`;
+            if (playerHasPlaced) {
+              if (!hasWon) {
+                message.textContent = `${game.enemy.name} is aiming...`;
 
-              setTimeout(() => {
-                if (enemyShipsToPlace.length <= 0) {
-                  attack(game.enemy, game.player);
-                } else {
-                  let result;
-                  do {
-                    const popped = enemyShipsToPlace.pop();
-                    result = placeShip(
-                      game.enemy,
-                      popped,
-                      Math.floor(Math.random() * 10),
-                      Math.floor(Math.random() * 10),
-                      Math.floor(Math.random() * 2) === 0
-                    );
+                setTimeout(() => {
+                  if (enemyShipsToPlace.length <= 0) {
+                    attack(game.enemy, game.player);
+                  } else {
+                    let result;
+                    do {
+                      const popped = enemyShipsToPlace.pop();
+                      result = placeShip(
+                        game.enemy,
+                        popped,
+                        Math.floor(Math.random() * 10),
+                        Math.floor(Math.random() * 10),
+                        Math.floor(Math.random() * 2) === 0
+                      );
 
-                    if (!result) {
-                      enemyShipsToPlace.push(popped);
-                    } else {
-                      message.textContent = `${popped}`;
-                    }
-                  } while (!result);
-                }
-                renderBoards();
-                boardView.classList.toggle('locked');
-              }, 3000);
+                      if (!result) {
+                        enemyShipsToPlace.push(popped);
+                      } else {
+                        message.textContent = `${game.enemy.name} placed a ${result.name}`;
+                      }
+                    } while (!result);
+                  }
+                  renderBoards();
+                  boardView.classList.toggle('locked');
+                }, 3000);
+              }
             }
           }, 5000);
         });
