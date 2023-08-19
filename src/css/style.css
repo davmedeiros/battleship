@@ -141,3 +141,7 @@ button:hover,
 button.enabled {
   background-color: var(--color-psi);
 }
+
+.hidden {
+  display: none;
+}

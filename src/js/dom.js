@@ -105,7 +105,7 @@ const renderBoards = () => {
               if (result) {
                 message.textContent = `${game.player.name} placed a ${result.name}`;
                 if (playerShipsToPlace.length === 0) {
-                  toggleVertical.remove();
+                  toggleVertical.classList.add('hidden');
                 }
               } else {
                 playerShipsToPlace.push(popped);
