@@ -3,22 +3,24 @@ import Game from './game';
 const game = Game('Admiral');
 const boardViews = document.querySelectorAll('.board');
 const message = document.querySelector('#message');
+const playerShipsToPlace = [2, 2, 3, 3];
+const enemyShipsToPlace = [2, 2, 3, 3];
 
 // MOCK: Make some mock plays for testing purposes
-const mockPlays = () => {
-  game.player.getGameBoard().placeShip(3, 3, 7);
-  game.player.getGameBoard().placeShip(2, 0, 0, true);
-  game.player.getGameBoard().placeShip(3, 9, 4);
-  game.player.getGameBoard().placeShip(2, 5, 4);
-  game.enemy.getGameBoard().placeShip(3, 7, 3, true);
-  game.enemy.getGameBoard().placeShip(2, 2, 2);
-  game.enemy.getGameBoard().placeShip(3, 0, 6, true);
-  game.enemy.getGameBoard().placeShip(2, 4, 7);
-  game.player.attack(game.enemy.getGameBoard(), 4, 3);
-  game.enemy.attack(game.player.getGameBoard());
-};
+// const mockPlays = () => {
+//   game.player.getGameBoard().placeShip(3, 3, 7);
+//   game.player.getGameBoard().placeShip(2, 0, 0, true);
+//   game.player.getGameBoard().placeShip(3, 9, 4);
+//   game.player.getGameBoard().placeShip(2, 5, 4);
+//   game.enemy.getGameBoard().placeShip(3, 7, 3, true);
+//   game.enemy.getGameBoard().placeShip(2, 2, 2);
+//   game.enemy.getGameBoard().placeShip(3, 0, 6, true);
+//   game.enemy.getGameBoard().placeShip(2, 4, 7);
+//   game.player.attack(game.enemy.getGameBoard(), 4, 3);
+//   game.enemy.attack(game.player.getGameBoard());
+// };
 
-mockPlays();
+// mockPlays();
 //-----------------------------------------------
 
 const clearContainer = (container) => {
@@ -31,6 +33,12 @@ const endGame = () => {
   boardViews.forEach((boardView) => {
     boardView.classList.add('locked');
   });
+};
+
+const placeShip = (placer, length, coordinatesY, coordinatesX, isVertical) => {
+  placer
+    .getGameBoard()
+    .placeShip(length, coordinatesY, coordinatesX, isVertical);
 };
 
 const attack = (attacker, target, coordinatesY, coordinatesX) => {
@@ -92,12 +100,21 @@ const renderBoards = () => {
           let hasWon = false;
 
           setTimeout(() => {
-            hasWon = attack(
-              game.player,
-              game.enemy,
-              coordinatesY,
-              coordinatesX
-            );
+            if (playerShipsToPlace.length <= 0) {
+              hasWon = attack(
+                game.player,
+                game.enemy,
+                coordinatesY,
+                coordinatesX
+              );
+            } else {
+              placeShip(
+                game.player,
+                playerShipsToPlace.pop(),
+                coordinatesY,
+                coordinatesX
+              );
+            }
             renderBoards();
           }, 3000);
 
@@ -106,7 +123,17 @@ const renderBoards = () => {
               message.textContent = `${game.enemy.name} is aiming...`;
 
               setTimeout(() => {
-                attack(game.enemy, game.player);
+                if (enemyShipsToPlace.length <= 0) {
+                  attack(game.enemy, game.player);
+                } else {
+                  placeShip(
+                    game.enemy,
+                    enemyShipsToPlace.pop(),
+                    Math.floor(Math.random() * 10),
+                    Math.floor(Math.random() * 10),
+                    Math.floor(Math.random() * 2) === 0
+                  );
+                }
                 renderBoards();
                 boardView.classList.toggle('locked');
               }, 3000);
