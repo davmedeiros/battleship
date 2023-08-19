@@ -7,9 +7,15 @@ const boardViews = document.querySelectorAll('.board');
 const mockPlays = () => {
   game.player.getGameBoard().placeShip(3, 3, 7);
   game.player.getGameBoard().placeShip(2, 0, 0, true);
-  game.player.getGameBoard().placeShip(3, 10, 4);
+  game.player.getGameBoard().placeShip(3, 9, 4);
+  game.player.getGameBoard().placeShip(2, 5, 4);
   game.enemy.getGameBoard().placeShip(3, 7, 3, true);
   game.enemy.getGameBoard().placeShip(2, 2, 2);
+  game.enemy.getGameBoard().placeShip(3, 0, 6, true);
+  game.enemy.getGameBoard().placeShip(2, 4, 7);
+  game.player.attack(game.enemy.getGameBoard(), 4, 3);
+  // TODO: Enemy shoots at multiple places at once O.O ... maybe next level armament or...?
+  game.enemy.attack(game.player.getGameBoard());
 };
 
 mockPlays();
