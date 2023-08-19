@@ -119,7 +119,7 @@ const renderBoards = () => {
               }
             }
             renderBoards();
-          }, 3000);
+          }, 1000);
 
           setTimeout(() => {
             if (playerHasPlaced) {
@@ -150,10 +150,10 @@ const renderBoards = () => {
                   }
                   renderBoards();
                   boardView.classList.toggle('locked');
-                }, 3000);
+                }, 1000);
               }
             }
-          }, 5000);
+          }, 2000);
         });
 
         boardView.appendChild(spotView);
