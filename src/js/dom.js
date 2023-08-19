@@ -14,7 +14,6 @@ const mockPlays = () => {
   game.enemy.getGameBoard().placeShip(3, 0, 6, true);
   game.enemy.getGameBoard().placeShip(2, 4, 7);
   game.player.attack(game.enemy.getGameBoard(), 4, 3);
-  // TODO: Enemy shoots at multiple places at once O.O ... maybe next level armament or...?
   game.enemy.attack(game.player.getGameBoard());
 };
 

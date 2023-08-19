@@ -44,6 +44,5 @@ test('AI only attacks once per turn', () => {
   const shotCount = flatBoard
     .filter((state) => state === 'shot')
     .reduce((total) => total + 1, 0);
-
   expect(shotCount).toBe(1);
 });
