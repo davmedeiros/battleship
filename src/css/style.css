@@ -81,6 +81,14 @@ h1 {
   grid-template: 1fr / repeat(2, 1fr);
 }
 
+#player {
+  cursor: crosshair;
+}
+
+#enemy {
+  cursor: not-allowed;
+}
+
 .board {
   background-color: white;
   aspect-ratio: 1 / 1;
@@ -91,7 +99,6 @@ h1 {
   gap: 5px;
   background-color: var(--color-omega);
   overflow: hidden;
-  cursor: crosshair;
 }
 
 .spot {
