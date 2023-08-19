@@ -18,6 +18,7 @@ const mockPlays = () => {
 };
 
 mockPlays();
+//-----------------------------------------------
 
 const renderBoards = () => {
   const playerBoard = game.player.getGameBoard().getBoard();
@@ -26,8 +27,8 @@ const renderBoards = () => {
   let index = 0;
 
   boardViews.forEach((boardView) => {
-    boards[index].forEach((rows) => {
-      rows.forEach((spot) => {
+    boards[index].forEach((rows, coordinatesY) => {
+      rows.forEach((spot, coordinatesX) => {
         const spotView = document.createElement('div');
         spotView.classList.add('spot');
 
@@ -38,6 +39,8 @@ const renderBoards = () => {
         } else {
           spotView.classList.add('free');
         }
+
+        spotView.textContent = `${coordinatesY}/${coordinatesX}`;
 
         boardView.appendChild(spotView);
       });
