@@ -69,7 +69,7 @@ const renderBoards = () => {
 
         if (spot === 'shot') {
           spotView.classList.add('shot');
-        } else if (spot) {
+        } else if (spot && index === 0) {
           spotView.classList.add('ship');
         } else {
           spotView.classList.add('free');
