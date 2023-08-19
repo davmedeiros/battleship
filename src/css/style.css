@@ -116,3 +116,7 @@ h1 {
 .ship {
   background-color: var(--color-alpha);
 }
+
+.locked {
+  pointer-events: none;
+}

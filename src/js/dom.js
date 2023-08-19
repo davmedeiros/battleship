@@ -27,6 +27,12 @@ const clearContainer = (container) => {
   }
 };
 
+const endGame = () => {
+  boardViews.forEach((boardView) => {
+    boardView.classList.add('locked');
+  });
+};
+
 const aiAttack = () => game.enemy.attack(game.player.getGameBoard());
 
 const attack = (coordinatesY, coordinatesX) => {
@@ -40,6 +46,7 @@ const attack = (coordinatesY, coordinatesX) => {
     if (result.isSunk()) {
       if (game.enemy.getGameBoard().hasAllSunk()) {
         message.textContent = 'Congratulations. You sunk all ships!';
+        endGame();
       } else {
         message.textContent = 'You sunk a ship!';
       }
