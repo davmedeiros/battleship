@@ -26,6 +26,14 @@ const clearContainer = (container) => {
   }
 };
 
+const aiAttack = () => {
+  game.enemy.attack(game.player.getGameBoard());
+};
+
+const attack = (coordinatesY, coordinatesX) => {
+  game.player.attack(game.enemy.getGameBoard(), coordinatesY, coordinatesX);
+};
+
 const renderBoards = () => {
   const playerBoard = game.player.getGameBoard().getBoard();
   const enemyBoard = game.enemy.getGameBoard().getBoard();
@@ -52,11 +60,8 @@ const renderBoards = () => {
         spotView.dataset.coordinatesX = coordinatesX;
 
         spotView.addEventListener('click', () => {
-          game.player.attack(
-            game.enemy.getGameBoard(),
-            coordinatesY,
-            coordinatesX
-          );
+          attack(coordinatesY, coordinatesX);
+          aiAttack();
           renderBoards();
         });
 
