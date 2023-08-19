@@ -35,16 +35,16 @@ const endGame = () => {
 
 const aiAttack = () => game.enemy.attack(game.player.getGameBoard());
 
-const attack = (coordinatesY, coordinatesX) => {
-  const result = game.player.attack(
-    game.enemy.getGameBoard(),
+const attack = (attacker, target, coordinatesY, coordinatesX) => {
+  const result = attacker.attack(
+    target.getGameBoard(),
     coordinatesY,
     coordinatesX
   );
 
   if (result) {
     if (result.isSunk()) {
-      if (game.enemy.getGameBoard().hasAllSunk()) {
+      if (target.getGameBoard().hasAllSunk()) {
         message.textContent = 'Congratulations. You sunk all ships!';
         endGame();
       } else {
@@ -73,7 +73,7 @@ const renderBoards = () => {
 
         if (spot === 'shot') {
           spotView.classList.add('shot');
-        } else if (spot) {
+        } else if (spot && index === 0) {
           spotView.classList.add('ship');
         } else {
           spotView.classList.add('free');
@@ -84,7 +84,7 @@ const renderBoards = () => {
         spotView.dataset.coordinatesX = coordinatesX;
 
         spotView.addEventListener('click', () => {
-          attack(coordinatesY, coordinatesX);
+          attack(game.player, game.enemy, coordinatesY, coordinatesX);
           aiAttack();
           renderBoards();
         });
