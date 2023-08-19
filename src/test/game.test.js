@@ -12,5 +12,5 @@ test('Creates a game', () => {
 
 test('Returns something when it plays successfully', () => {
   const game = Game('John Doe');
-  expect(game.play()).not.toBeUndefined();
+  expect(game.play(3, 2)).not.toBeUndefined();
 });
