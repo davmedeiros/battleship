@@ -86,4 +86,13 @@ h1 {
   aspect-ratio: 1 / 1;
   border-radius: 11px;
   box-shadow: var(--shadow);
+  display: grid;
+  grid-template: repeat(10, 1fr) / repeat(10, 1fr);
+  gap: 5px;
+  background-color: var(--color-omega);
+  overflow: hidden;
+}
+
+.spot {
+  background-color: var(--color-gamma);
 }
