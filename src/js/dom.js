@@ -106,11 +106,6 @@ const renderBoards = () => {
 
               if (result) {
                 message.textContent = `${game.player.name} placed a ${result.name}`;
-                if (playerShipsToPlace.length === 0) {
-                  toggleVertical.classList.add('hidden');
-                  playerBoardView.classList.toggle('locked');
-                  enemyBoardView.classList.toggle('locked');
-                }
               } else {
                 playerShipsToPlace.push(popped);
                 playerHasPlaced = false;
@@ -145,6 +140,11 @@ const renderBoards = () => {
                         enemyShipsToPlace.push(popped);
                       } else {
                         message.textContent = `${game.enemy.name} placed a ${result.name}`;
+                        if (enemyShipsToPlace.length === 0) {
+                          toggleVertical.classList.add('hidden');
+                          playerBoardView.classList.toggle('locked');
+                          enemyBoardView.classList.toggle('locked');
+                        }
                       }
                     } while (!result);
                   }
