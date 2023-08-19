@@ -12,6 +12,7 @@ test('Creates a game', () => {
 
 test('Returns something when it plays successfully', () => {
   const game = Game('John Doe');
+  game.enemy.getBoard().placeShip(3, 3, 2);
   expect(game.play(3, 2)).not.toBeUndefined();
 });
 
