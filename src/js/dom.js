@@ -93,11 +93,14 @@ const renderBoards = () => {
             coordinatesX
           );
 
-          if (!hasWon) {
-            attack(game.enemy, game.player);
-          }
-
           renderBoards();
+
+          if (!hasWon) {
+            setTimeout(() => {
+              attack(game.enemy, game.player);
+              renderBoards();
+            }, 3000);
+          }
         });
 
         boardView.appendChild(spotView);
