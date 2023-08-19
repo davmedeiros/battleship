@@ -137,6 +137,7 @@ button {
   border-radius: 11px;
 }
 
-button:hover {
+button:hover,
+button.enabled {
   background-color: var(--color-psi);
 }
