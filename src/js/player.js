@@ -29,9 +29,9 @@ const Player = (name, isAI = false) => {
     return result;
   };
 
-  const getBoard = () => board;
+  const getGameBoard = () => board;
 
-  return { name, isAI, attack, getBoard };
+  return { name, isAI, attack, getGameBoard };
 };
 
 export default Player;

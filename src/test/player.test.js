@@ -5,7 +5,7 @@ test("Creates a player with a name and if it's AI or not", () => {
     name: 'John Doe',
     isAI: false,
     attack: expect.any(Function),
-    getBoard: expect.any(Function),
+    getGameBoard: expect.any(Function),
   };
   const player = Player('John Doe');
   expect(player).toEqual(expected);
@@ -14,7 +14,7 @@ test("Creates a player with a name and if it's AI or not", () => {
 test('Attack returns something if it was successful', () => {
   const player = Player('John Doe');
   const enemy = Player('Amy Row');
-  const enemyBoard = enemy.getBoard();
+  const enemyBoard = enemy.getGameBoard();
   enemyBoard.placeShip(3, 4, 5);
   expect(player.attack(enemyBoard, 4, 6)).not.toBeUndefined();
 });
@@ -22,7 +22,7 @@ test('Attack returns something if it was successful', () => {
 test('Attack returns undefined it hits nothing', () => {
   const player = Player('John Doe');
   const enemy = Player('Amy Row');
-  const enemyBoard = enemy.getBoard();
+  const enemyBoard = enemy.getGameBoard();
   enemyBoard.placeShip(3, 4, 5);
   expect(player.attack(enemyBoard, 7, 8)).toBeUndefined();
 });
@@ -30,7 +30,7 @@ test('Attack returns undefined it hits nothing', () => {
 test('AI player attacks successfully', () => {
   const robot = Player('Mr. ROBOT', true);
   const enemy = Player('Amy Row');
-  const enemyBoard = enemy.getBoard();
+  const enemyBoard = enemy.getGameBoard();
   enemyBoard.placeShip(3, 4, 5);
   expect(robot.attack(enemyBoard)).not.toBeUndefined();
 });
@@ -38,6 +38,6 @@ test('AI player attacks successfully', () => {
 test("AI doesn't get stuck if there are no spots to attack", () => {
   const robot = Player('Mr. ROBOT', true);
   const enemy = Player('Amy Row');
-  const enemyBoard = enemy.getBoard();
+  const enemyBoard = enemy.getGameBoard();
   expect(robot.attack(enemyBoard)).toBeUndefined();
 });
