@@ -34,6 +34,7 @@ const endGame = () => {
 };
 
 const attack = (attacker, target, coordinatesY, coordinatesX) => {
+  let hasWon = false;
   const result = attacker.attack(
     target.getGameBoard(),
     coordinatesY,
@@ -45,6 +46,7 @@ const attack = (attacker, target, coordinatesY, coordinatesX) => {
       if (target.getGameBoard().hasAllSunk()) {
         message.textContent = `${attacker.name} sunk all ships!`;
         endGame();
+        hasWon = true;
       } else {
         message.textContent = `${attacker.name} sunk a ship!`;
       }
@@ -54,6 +56,8 @@ const attack = (attacker, target, coordinatesY, coordinatesX) => {
   } else {
     message.textContent = `${attacker.name} missed!`;
   }
+
+  return hasWon;
 };
 
 const renderBoards = () => {
@@ -71,7 +75,7 @@ const renderBoards = () => {
 
         if (spot === 'shot') {
           spotView.classList.add('shot');
-        } else if (spot && index === 0) {
+        } else if (spot) {
           spotView.classList.add('ship');
         } else {
           spotView.classList.add('free');
@@ -82,8 +86,17 @@ const renderBoards = () => {
         spotView.dataset.coordinatesX = coordinatesX;
 
         spotView.addEventListener('click', () => {
-          attack(game.player, game.enemy, coordinatesY, coordinatesX);
-          attack(game.enemy, game.player);
+          const hasWon = attack(
+            game.player,
+            game.enemy,
+            coordinatesY,
+            coordinatesX
+          );
+
+          if (!hasWon) {
+            attack(game.enemy, game.player);
+          }
+
           renderBoards();
         });
 
