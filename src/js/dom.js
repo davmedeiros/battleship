@@ -4,6 +4,8 @@ const game = Game('Admiral');
 const boardViews = document.querySelectorAll('.board');
 const message = document.querySelector('#message');
 const toggleVertical = document.querySelector('#toggle-vertical');
+const playerBoardView = document.querySelector('#player');
+const enemyBoardView = document.querySelector('#enemy');
 const playerShipsToPlace = [2, 3, 3, 4, 5];
 const enemyShipsToPlace = [2, 3, 3, 4, 5];
 let isToggledVertical = false;
@@ -106,6 +108,8 @@ const renderBoards = () => {
                 message.textContent = `${game.player.name} placed a ${result.name}`;
                 if (playerShipsToPlace.length === 0) {
                   toggleVertical.classList.add('hidden');
+                  playerBoardView.classList.toggle('locked');
+                  enemyBoardView.classList.toggle('locked');
                 }
               } else {
                 playerShipsToPlace.push(popped);

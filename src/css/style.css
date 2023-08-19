@@ -81,10 +81,7 @@ h1 {
   grid-template: 1fr / repeat(2, 1fr);
 }
 
-#player {
-  pointer-events: none;
-}
-
+#player,
 #enemy {
   cursor: crosshair;
 }
