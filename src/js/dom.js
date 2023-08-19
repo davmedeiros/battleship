@@ -41,6 +41,8 @@ const renderBoards = () => {
         }
 
         spotView.textContent = `${coordinatesY}/${coordinatesX}`;
+        spotView.dataset.coordinatesY = coordinatesY;
+        spotView.dataset.coordinatesX = coordinatesX;
 
         boardView.appendChild(spotView);
       });
