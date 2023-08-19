@@ -2,6 +2,7 @@ import Game from './game';
 
 const game = Game('Admiral');
 const boardViews = document.querySelectorAll('.board');
+const message = document.querySelector('#message');
 
 // MOCK: Make some mock plays for testing purposes
 const mockPlays = () => {
@@ -26,12 +27,24 @@ const clearContainer = (container) => {
   }
 };
 
-const aiAttack = () => {
-  game.enemy.attack(game.player.getGameBoard());
-};
+const aiAttack = () => game.enemy.attack(game.player.getGameBoard());
 
 const attack = (coordinatesY, coordinatesX) => {
-  game.player.attack(game.enemy.getGameBoard(), coordinatesY, coordinatesX);
+  const result = game.player.attack(
+    game.enemy.getGameBoard(),
+    coordinatesY,
+    coordinatesX
+  );
+
+  if (result) {
+    if (result.isSunk()) {
+      message.textContent = 'You sunk a ship!';
+    } else {
+      message.textContent = 'The shot hit a ship!';
+    }
+  } else {
+    message.textContent = 'Missed!';
+  }
 };
 
 const renderBoards = () => {
