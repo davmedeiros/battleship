@@ -118,6 +118,10 @@ h1 {
   pointer-events: none;
 }
 
+.board:not(.locked) {
+  outline: 4px solid var(--color-alpha);
+}
+
 #actions-area {
   grid-row: 1 / -1;
   grid-column: 3 / -1;
