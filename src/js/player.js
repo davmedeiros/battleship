@@ -79,6 +79,8 @@ const Player = (name, isAI = false) => {
         target = enemyBoard.getBoard()[coordinatesY][coordinatesX];
       }
 
+      loopCount += 1;
+
       if (loopCount > 100) {
         // failsafe to prevent unknown infinite loops from breaking the browser
         break;
