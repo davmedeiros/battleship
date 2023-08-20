@@ -9,6 +9,7 @@ const enemyBoardView = document.querySelector('#enemy');
 const playerShipsToPlace = [2, 3, 3, 4, 5];
 const enemyShipsToPlace = [2, 3, 3, 4, 5];
 let isToggledVertical = false;
+const gameDelay = 1000;
 
 const clearContainer = (container) => {
   while (container.firstChild) {
@@ -42,7 +43,7 @@ const attack = (attacker, target, coordinatesY, coordinatesX) => {
         endGame();
         hasWon = true;
       } else {
-        message.textContent = `${attacker.name} sunk a ship!`;
+        message.textContent = `${attacker.name} sunk a ${result.name}`;
       }
     } else {
       message.textContent = `${attacker.name} hit a ship!`;
@@ -114,7 +115,7 @@ const renderBoards = () => {
               }
             }
             renderBoards();
-          }, 1000);
+          }, gameDelay);
 
           setTimeout(() => {
             if (playerHasPlaced) {
@@ -123,7 +124,7 @@ const renderBoards = () => {
 
                 setTimeout(() => {
                   if (enemyShipsToPlace.length <= 0) {
-                    attack(game.enemy, game.player);
+                    hasWon = attack(game.enemy, game.player);
                   } else {
                     let result;
                     do {
@@ -154,11 +155,13 @@ const renderBoards = () => {
                     } while (!result);
                   }
                   renderBoards();
-                  boardView.classList.toggle('locked');
-                }, 1000);
+                  if (!hasWon) {
+                    boardView.classList.toggle('locked');
+                  }
+                }, gameDelay);
               }
             }
-          }, 2000);
+          }, gameDelay + gameDelay);
         });
 
         boardView.appendChild(spotView);
