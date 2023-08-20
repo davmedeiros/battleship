@@ -17,6 +17,7 @@ const Player = (name, isAI = false) => {
     let coordinatesY;
     let coordinatesX;
     let target = 'shot';
+    let loopCount = 0;
 
     while (target === 'shot' && !enemyBoard.hasAllSunk()) {
       if (lastHitCoordinatesY === -1 && lastHitCoordinatesX === -1) {
@@ -76,6 +77,11 @@ const Player = (name, isAI = false) => {
         }
 
         target = enemyBoard.getBoard()[coordinatesY][coordinatesX];
+      }
+
+      if (loopCount > 100) {
+        // failsafe to prevent unknown infinite loops from breaking the browser
+        break;
       }
     }
 
