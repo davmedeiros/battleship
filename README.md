@@ -1,3 +1,1 @@
-# battleship
-
-TOP - Battleship
+# TOP - Educational Project - Battleship
